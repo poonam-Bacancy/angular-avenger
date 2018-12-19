@@ -1,0 +1,18 @@
+<form #loginForm="ngForm" (submit)="submitBtnClick(loginForm)">
+  <div class="form-group">
+    <label class="col-sm-2 col-form-label"> Username: </label>
+    <div class="col-sm-10">
+      <input type="text" name="uname" class="form-control" ngModel>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 col-form-label">Password : </label>
+    <div class="col-sm-10">
+      <input type="password" name="pass" class="form-control" ngModel>
+    </div>
+  </div>
+  <div class="col-sm-2">
+    <button type="subm  it" class="btn btn-primary"> Submit </button>&nbsp;
+    <button type="button" class="btn btn-default" (click) = "loginForm.reset()"> Cancel </button>
+  </div>
+</form>

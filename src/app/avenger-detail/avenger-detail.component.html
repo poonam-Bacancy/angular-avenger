@@ -1,0 +1,20 @@
+<table border="2" class="table">
+  <tr>
+    <th> Avenger Name </th>
+    <th> Avenger Skill </th>
+    <th> Avenger Description</th>
+    <th>Action</th>
+  </tr>
+  <tr *ngFor='let avenger of avengers; index as i'>
+    <td>{{ avenger.name }}</td>
+    <td>{{ avenger.skill }}</td>
+    <td>{{ avenger.description }}</td>
+    <td>
+      <a routerLink='/avengershow/{{avenger.id}}' class="btn btn-link">Show</a>
+      <a routerLink='/avenger/edit/{{avenger.id}}' class="btn btn-link">Edit</a>
+      <button (click) = "deleteAvenger(avenger.id, i)" class="btn btn-link">Delete</button>
+    </td>
+  </tr>
+</table>
+
+<a routerLink="/avengers" class="btn btn-link">New Avengers</a>

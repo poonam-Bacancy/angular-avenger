@@ -1,0 +1,18 @@
+<h1> List Avengers</h1>
+<!-- <ul>
+  <li *ngFor = "let avenger of avengers">
+    <a routerLink = "/details/{{avenger.id}}">{{ avenger.name }}</a>
+    <ul>
+      <li> {{ avenger.skill }}</li>
+      <li> {{ avenger.description }}</li>
+      <li>
+        <a href="https://{{ avenger.website}}"> {{ avenger.id }}</a>
+      </li>
+    </ul>
+  </li>
+</ul> -->
+<ul>
+  <li><strong>Name:</strong> {{ avenger.name }}</li>
+  <li><strong>Skill:</strong> {{ avenger.skill }}</li>
+  <li><strong>Description:</strong> {{ avenger.description }}</li>
+</ul>

@@ -12,9 +12,13 @@ import { observable } from 'rxjs';
   styleUrls: ['./avengers.component.css']
 })
 export class AvengersComponent implements OnInit {
-
+  
   // avengers: any = [];
+  uploadData: File;
+  selectedFile: File;
   avengers: Object;
+  avenger: any;
+  param_id: string;
   obj = {
     name: '',
     description: '',
@@ -30,6 +34,7 @@ export class AvengersComponent implements OnInit {
     this.route.params.subscribe( params => {
       // this.avengers = params.id
       if (params.id) {
+        this.param_id = params.id;
         this.data.getAvenger(params.id).subscribe(
           data => {
             this.avenger = data;
@@ -41,17 +46,31 @@ export class AvengersComponent implements OnInit {
   }
 
   submitBtnClick(data) {
-    this.data.addAvenger(data.value).subscribe( data => {
-      // this.router.navigate(['/avengerdetail']);
-      this.router.navigateByUrl('/avengerdetail');
-    });
+    console.log(this.selectedFile)
+    const uploadData = new FormData();
+    uploadData.append('name', data.value.name);
+    uploadData.append('skill', data.value.skill);
+    uploadData.append('description', data.value.description);
+    uploadData.append('image', this.selectedFile);
+    // formData.append('image', this.uploadData);
+    console.log('dfdfdfd',uploadData);
+    if (this.param_id) {
+      this.data.editAvenger(this.param_id, uploadData).subscribe( data => {
+        this.router.navigateByUrl('/avengerdetail');
+      });
+    }
+    else {
+      this.data.addAvenger(uploadData).subscribe( data => {
+        this.router.navigateByUrl('/avengerdetail');
+      });
+    }
   }
-  avenger: any;
+
+  onFileChanged(event) {
+    this.selectedFile = event.target.files[0];
+  } 
 
   ngOnInit() {
-    // this.data.getAvenger(this.avenger).subscribe(
-    //   data => this.avenger = data
-    // )
   }
 
   // ngOnInit() {

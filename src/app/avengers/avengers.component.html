@@ -5,27 +5,29 @@
   <div class="col-5">
     <form #avengerForm="ngForm" (submit)="submitBtnClick(avengerForm)">
       <div class="form-group">
-        <label class="col-sm-2 col-form-label"> Name: </label>
+        <label class="col-sm-3 col-form-label"> Name: </label>
         <div class="col-sm-10">
           <input type="text" name="name" class="form-control" [(ngModel)]="obj.name">
         </div>
       </div>
       <div class="form-group">
-        <label class="col-sm-2"> Description : </label>
+        <label class="col-sm-3"> Description: </label>
         <div class="col-sm-10">
           <textarea class="form-control" name="description" rows="5" [(ngModel)]="obj.description"></textarea>
         </div>
       </div>
       <div class="form-group">
-        <label class="col-sm-2"> Skills : </label>
+        <label class="col-sm-3"> Skills : </label>
         <div class="col-sm-10">
           <textarea class="form-control" name="skill" rows="5" [(ngModel)]="obj.skill"></textarea>
         </div>
       </div>
       <div class="form-group">
-        <label class="col-sm-2"> Photo : </label>
+        <label class="col-sm-3"> ChooseFile : </label>
         <div class="col-sm-10">
-          <input type="file" name="image" class="form-control-file" ngModel>
+          <!-- <input type="file" name="image" class="form-control-file" ngModel> -->
+          <!-- <img src="{{avenger.image_file_name}}" style="height: 80px; width: 100px;" /> -->
+          <input type="file" name="image" (change)="onFileChanged($event)" class="form-control-file" ngModel #fileInput>
         </div>
       </div>
       <div class="col-sm-2">
